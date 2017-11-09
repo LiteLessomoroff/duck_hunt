@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" 
+</head>
+<body>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script>
+   var tex_tmp = "tex"
+   var current_id = 0;
+   function openCity(evt, cityName) {
+     // Declare all variables
+     var i, tabcontent, tablinks;
+
+     // Get all elements with class="tabcontent" and hide them
+     tabcontent = document.getElementsByClassName("tabcontent");
+     for (i = 0; i < tabcontent.length; i++) {
+       tabcontent[i].style.display = "none";
+     }
+
+     // Get all elements with class="tablinks" and remove the class "active"
+     tablinks = document.getElementsByClassName("tablinks");
+     for (i = 0; i < tablinks.length; i++) {
+       tablinks[i].className = tablinks[i].className.replace(" active", "");
+     }
+
+     // Show the current tab, and add an "active" class to the button that opened the tab
+     
+     document.getElementById(cityName).style.display = "block";
+     evt.currentTarget.className += " active";
+   }
+
+   function add(){
+     var tex = document.createElement("DIV");
+     tex.class="tabcontent";
+     tex.id = tex_tmp + current_id++;
+     tex.innerHTML=textarea_.value;
+     console.log(tex.id);
+     var x = document.createElement("button");
+     x.class="tablinks";
+     x.onclick=(function(){console.log(tex.id);openCity(event, tex.id);});
+     x.innerHTML = "123";
+     console.log(textarea_.value);
+     //textarea_.innerHTML = "12345";
+     tab_panel.appendChild(x);
+     console.log(x);
+   }
+  </script>
+  <div id="tab_panel" class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Инфо')">Инфо</button>
+    <button class="tablinks" onclick="openCity(event, 'Инфо')">Инфо</button>
+    <button class="tablinks" onclick="openCity(event, 'Инфо')">Инфо</button>
+  </div>
+  <div id="Инфо" class="tabcontent">
+    <h3>Внизу есть две кнопки</h3>
+    <p>Добавить и удалить</p>
+  </div>
+  <div id="Инфо1" class="tabcontent">
+    <h3> 1Внизу есть две кнопки</h3>
+    <p>  1Добавить и удалить</p>
+  </div>
+  <div id="Инфо2" class="tabcontent">
+    <h3> 2Внизу есть две кнопки</h3>
+    <p>  2Добавить и удалить</p>
+  </div>
+  <textarea cols="60" id="textarea_" name="" rows="15"></textarea>
+  <br><br>
+  <button id="admit_button" onclick="add()">Admit</button>
+  <button id="delete_button">Delete</button>
+  <script type="text/javascript" src="test.js"></script>
+  <script>
+   main();
+   //admit_button.onclick = add;
+  </script>
+</body>
